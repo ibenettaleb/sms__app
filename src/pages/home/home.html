@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-icon name="send"></ion-icon> Send SMS
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <img src="assets/imgs/iconhead.png" width="50%" style="align-items: center; display: block; margin: auto"/>
+    <form [formGroup]="sms__app" (ngSubmit)="sendTextMessage()">
+      <ion-item>
+        <ion-label floating>Phone number</ion-label>
+        <ion-input type="tel" formControlName="phoneNumber" pattern="[0-9]*" [(ngModel)]="phoneNumber"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text" formControlName="title" [(ngModel)]="title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Message</ion-label>
+        <ion-textarea rows="5" maxlength="200" formControlName="textMessage" [(ngModel)]="textMessage"></ion-textarea>
+      </ion-item>
+      <span float-right="">{{200 - textMessage.length}}</span>
+
+      <div padding>
+        <button ion-button icon-left float-right="" style="left: 26px;" color="secondary" type="submit" [disabled]="!sms__app.valid" outline>
+          <ion-icon name="send"></ion-icon>
+          Send
+        </button>
+      </div>
+
+    </form>
+  </ion-list>
+
+  <div padding>
+
+  </div>
+
+</ion-content>
